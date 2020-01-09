@@ -1,0 +1,50 @@
+version: '2'
+services:
+
+  pipeline:
+    image: gofast/telem-workshop-pipeline
+    build: pipeline/.
+    ports:
+      - 5432:5432
+    command: "./startup.sh"
+    links:
+      - "influx:influxdb"
+    depends_on:
+      - influx
+    environment:
+      - influx_ip=influx
+      - influx_port=8086
+    volumes:
+      - ${PWD}/pipeline/metrics.json:/data/metrics.json
+      - ${PWD}/pipeline/metrics-ospf.json:/data/metrics-ospf.json
+      - ${PWD}/pipeline/config/pipeline.conf_REWRITTEN:/data/config/pipeline.conf_REWRITTEN
+
+  influx:
+    image: influxdb:1.1.3
+    environment:
+      - INFLUXDB_ADMIN_ENABLED=true
+    ports:
+      - "8086:8086"
+      - "8083:8083"
+
+  grafana:
+    image: grafana/grafana:4.5.2
+    volumes:
+      - ./grafana:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    links:
+      - "influx:influxdb"
+    environment:
+     - "GF_LOG_LEVEL=debug"
+     - "GF_LOG_FILTERS=alerting.notifier.webhook:debug"
+     - "GF_AUTH_ANONYMOUS_ENABLED=true"
+     - "GF_DASHBOARDS.JSON_ENABLED=true"
+     - "GF_DASHBOARDS.JSON_PATH=/var/lib/grafana/dashboards/"
+    depends_on:
+      - influx
+
+  anx:
+      image: containers.cisco.com/adt_emear/anx
+      ports:
+          - 9269:8080

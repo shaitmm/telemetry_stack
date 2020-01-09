@@ -1,0 +1,323 @@
+[
+	{"basepath" : "Cisco-IOS-XR-ipv4-ospf-oper:ospf/processes/process/default-vrf/ospf-summary",
+"spec" : {
+"fields" : [
+	{"name" : "sa-num-nbrs"},
+	{"name" : "sa-num-nbrs-up"},
+	{"name" : "sa-num-intf"},
+	{"name" : "sa-num-intf-up"}
+	]
+}
+},
+{
+		"basepath" : "openconfig-bgp:bgp/neighbors/neighbor/state",
+		"spec" : {
+			"fields" : [
+				{"name" : "neighbor-address", "tag" : true},
+				{"name" : "session-state"}
+			]
+		}
+	},
+	{
+		"basepath" : "Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters",
+		"spec" : {
+			"fields" : [
+				{"name" : "interface-name", "tag" : true},
+				{"name" : "packets-received"},
+				{"name" : "bytes-received"},
+				{"name" : "packets-sent"},
+				{"name" : "bytes-sent"},
+				{"name" : "output-drops"},
+				{"name" : "output-queue-drops"},
+				{"name" : "input-drops"},
+				{"name" : "input-queue-drops"},
+				{"name" : "input-errors"},
+				{"name" : "crc-errors"},
+				{"name" : "input-ignored-packets"},
+				{"name" : "output-errors"},
+				{"name" : "output-buffer-failures"},
+				{"name" : "carrier-transitions"}
+			]
+		}
+	},
+
+  {
+                "basepath" : "Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/data-rate",
+                "spec" : {
+                        "fields" : [
+                                {"name" : "interface-name", "tag" : true},
+                                {"name" : "input-data-rate"},
+                                {"name" : "input-packet-rate"},
+                                {"name" : "output-data-rate", "track": true},
+                                {"name" : "output-packet-rate"},
+                                {"name" : "peak-input-data-rate"},
+                                {"name" : "peak-input-packet-rate"},
+                                {"name" : "peak-output-data-rate"},
+                                {"name" : "peak-output-packet-rate"},
+                                {"name" : "bandwidth"},
+                                {"name" : "load-interval"},
+                                {"name" : "output-load"},
+                                {"name" : "input-load"},
+                                {"name" : "reliability"}
+                        ]
+                }
+},
+
+       {
+		"basepath" : "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/tunnel-auto-bandwidths/tunnel-auto-bandwidth",
+		"spec" : {
+			"fields" : [
+				{"name" : "tunnel-name", "tag" : true},
+				{"name" : "highest-bandwidth"},
+				{"name" : "last-sample-bandwidth"},
+				{"name" : "samples-collected"},
+				{"name" : "tunnel-requested-bandwidth"}
+			]
+		}
+	},
+	{
+		"basepath" : "Cisco-IOS-XR-qos-ma-oper:qos/interface-table/interface/member-interfaces/member-interface/output/statistics",
+		"spec" : {
+			"fields" : [
+				{"name" : "interface-name", "tag" : true},
+				{"name" : "policy-name", "tag" : true},
+				{
+					"name" : "class-stats",
+					"fields" : [
+						{"name" : "class-name", "tag" : true},
+						{
+							"name" : "general-stats",
+							"fields" : [
+								{"name" : "transmit-packets"},
+								{"name" : "transmit-bytes"},
+								{"name" : "total-drop-packets"},
+								{"name" : "total-drop-bytes"},
+								{"name" : "total-drop-rate"},
+								{"name" : "total-transmit-rate"}
+							]
+						},
+						{
+							"name" : "queue-stats-array",
+							"fields" : [
+								{"name" : "queue-id", "tag" : true},
+								{"name" : "tail-drop-packets"},
+								{"name" : "tail-drop-bytes"},
+								{
+									"name" : "queue-average-length",
+									"fields" : [
+										{"name" : "value"},
+										{"name" : "unit", "tag" : true}
+									]
+								},
+								{"name" : "random-drop-packets"},
+								{"name" : "random-drop-bytes"},
+								{"name" : "conform-packets"},
+								{"name" : "conform-bytes"},
+								{"name" : "exceed-packets"},
+								{"name" : "exceed-bytes"}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"basepath" : "Cisco-IOS-XR-qos-ma-oper:qos/nodes/node/policy-map/interface-table/interface/output/statistics",
+		"spec" : {
+			"fields" : [
+				{"name" : "interface-name", "tag" : true},
+				{"name" : "node-name", "tag" : true},
+				{"name" : "policy-name", "tag" : true},
+				{"name" : "satid"},
+				{"name" : "state"},
+				{"name" : "state-description"},
+				{"name" : "subscriber-group"},
+				{
+					"name" : "class-stats",
+					"fields" : [
+						{"name" : "child-policy",
+						 "fields" : [
+							{"name" : "content",
+							 "fields" : [
+								{"name" : "class-stats",
+								 "fields" : [
+									{"name" : "class-name", "tag" : true},
+									{"name" : "cac-state"},
+									{"name" : "counter-validity-bitmask"},
+									{
+										"name" : "general-stats",
+										"fields" : [
+											{"name" : "match-data-rate"},
+											{"name" : "pre-policy-matched-bytes"},
+											{"name" : "pre-policy-matched-packets"},
+											{"name" : "transmit-packets"},
+											{"name" : "transmit-bytes"},
+											{"name" : "total-drop-packets"},
+											{"name" : "total-drop-bytes"},
+											{"name" : "total-drop-rate"},
+											{"name" : "total-transmit-rate"}
+										]
+									},
+									{
+										"name" : "queue-instance-length",
+										"fields" : [
+											{"name" : "unit"},
+											{"name" : "value"}
+										]
+									},
+									{"name" : "queue-descr"},
+  									{
+										"name" : "queue-stats-array",
+										"fields" : [
+											{"name" : "queue-id"},
+											{"name" : "conform-packets"},
+											{"name" : "conform-bytes"},
+											{"name" : "conform-rate"},
+											{"name" : "exceed-packets"},
+											{"name" : "exceed-bytes"},
+											{"name" : "exceed-rate"},
+											{"name" : "max-threshold-bytes"},
+											{"name" : "max-threshold-packets"},
+											{
+												"name" : "queue-average-length",
+												"fields" : [
+													{"name" : "value"},
+													{"name" : "unit"}
+												]
+											},
+											{
+												"name" : "queue-instance-length",
+												"fields" : [
+													{"name" : "value"},
+													{"name" : "unit"}
+												]
+											},
+											{"name" : "random-drop-packets"},
+											{"name" : "random-drop-bytes"},
+											{"name" : "tail-drop-packets"},
+											{"name" : "tail-drop-bytes"}
+										]
+									},
+									{
+										"name" : "police-stats-array",
+										"fields" : [
+											{"name" : "conform-packets"},
+											{"name" : "conform-bytes"},
+											{"name" : "conform-rate"},
+											{"name" : "drop-packets"},
+											{"name" : "drop-bytes"},
+											{"name" : "exceed-packets"},
+											{"name" : "exceed-bytes"},
+											{"name" : "exceed-rate"},
+											{"name" : "parent-drop-packets"},
+											{"name" : "parent-drop-bytes"},
+											{"name" : "violate-packets"},
+											{"name" : "violate-bytes"},
+											{"name" : "violate-rate"}
+										]
+									}
+										]
+								}
+							]
+							}
+						]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"basepath" : "Cisco-IOS-XR-qos-ma-oper:qos/interface-table/interface/output/statistics",
+		"spec" : {
+			"fields" : [
+				{"name" : "interface-name", "tag" : true},
+				{"name" : "policy-name", "tag" : true},
+				{
+					"name" : "class-stats",
+					"fields" : [
+						{"name" : "class-name", "tag" : true},
+						{
+							"name" : "general-stats",
+							"fields" : [
+								{"name" : "transmit-packets"},
+								{"name" : "transmit-bytes"},
+								{"name" : "total-drop-packets"},
+								{"name" : "total-drop-bytes"},
+								{"name" : "total-drop-rate"},
+								{"name" : "total-transmit-rate"}
+							]
+						},
+						{
+							"name" : "queue-stats-array",
+							"fields" : [
+								{"name" : "queue-id", "tag" : true},
+								{"name" : "tail-drop-packets"},
+								{"name" : "tail-drop-bytes"},
+								{
+									"name" : "queue-average-length",
+									"fields" : [
+										{"name" : "value"},
+										{"name" : "unit", "tag" : true}
+									]
+								},
+								{"name" : "random-drop-packets"},
+								{"name" : "random-drop-bytes"},
+								{"name" : "conform-packets"},
+								{"name" : "conform-bytes"},
+								{"name" : "exceed-packets"},
+								{"name" : "exceed-bytes"}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"basepath" : "Cisco-IOS-XR-procmem-oper:processes-memory/nodes/node/process-ids/process-id",
+		"spec" : {
+			"fields" : [
+				{"name":"node-name", "tag": true},
+				{"name":"name", "tag": true},
+				{"name":"text-seg-size"},
+				{"name":"data-seg-size"},
+				{"name":"stack-seg-size"},
+				{"name":"malloc-size"}
+			]
+		}
+	},
+	{
+		"basepath" : "Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary",
+		"spec" : {
+			"fields" : [
+				{"name":"node-name", "tag": true},
+				{"name":"ram-memory"},
+				{"name":"free-physical-memory"},
+				{"name":"system-ram-memory"},
+				{"name":"free-application-memory"}
+			]
+		}
+	},
+	{
+		"basepath" : "Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization",
+		"spec" : {
+			"fields" : [
+				{"name":"node-name", "tag": true},
+				{"name":"total-cpu-one-minute"},
+				{"name":"total-cpu-five-minute"},
+				{"name":"total-cpu-fifteen-minute"},
+				{
+					"name":"process-cpu",
+					"fields" : [
+						{"name":"process-name", "tag": true},
+						{"name":"process-cpu-one-minute"},
+						{"name":"process-cpu-five-minute"},
+						{"name":"process-cpu-fifteen-minute"}
+					]
+				}
+			]
+		}
+	}
+]
